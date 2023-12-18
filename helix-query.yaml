@@ -1,0 +1,8 @@
+version: 1
+# See https://www.hlx.live/docs/setup-indexing.
+
+indexes:
+  allpages:
+  articles:
+    include: '/**' 
+    target: /query-index
