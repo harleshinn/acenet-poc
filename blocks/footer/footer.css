@@ -1,14 +1,23 @@
 footer {
-  padding: 2rem;
-  background-color: var(--light-color);
+  background-color: var(--brand-primary);
+  color: var(--white);
   font-size: var(--body-font-size-s);
+  padding: 45px 0 35px;
+  background-image: url('/assets/FooterOverlay.png');
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 footer .footer {
-  max-width: 1200px;
   margin: auto;
+}
+
+footer .footer div {
+  max-width: unset;
+  font-size: 15px;
 }
 
 footer .footer p {
   margin: 0;
+
 }
