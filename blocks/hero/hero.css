@@ -1,34 +1,66 @@
-main .hero-container > div {
-  max-width: unset;
-}
-  
-main .hero-container {
-  padding: 0;
+.section .hero-wrapper {
+  max-width: 100vw;
 }
 
-.hero {
+.hero-block--content {
   position: relative;
-  padding: 32px;
-  min-height: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: white;
+.hero-block--content .hero-text {
+  background: rgba(255, 255, 255, .9);
+  padding: 15px 20px;
+  order: 2;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero-block--content .hero-text h1 {
+  font-size: var(--body-font-size-xs);
+  margin: 0;
+  color: var(--title-primary);
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
 }
 
-.hero img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
+.hero-block--content .hero-text p {
+  font-size: var(--body-font-size-m);
+  margin: 0;
+  color: var(--text-color);
+}
+
+.hero-block--content .hero-image img {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .hero-block--content .hero-text {
+    padding: 15px 20px;
+    bottom: 30px;
+    right: 30px;
+    position: absolute;
+    max-width: 50%;
+    border-bottom: 0;
+    box-shadow: 0 0 8px 3px rgba(0, 0, 0, .175);
+  }
+
+  .hero-block--content .hero-text h1 {
+    font-size: var(--body-font-size-m);
+  }
+  
+}
+
+@media screen and (min-width: 992px) {
+  .hero-block--content .hero-text {
+    padding: 15px;
+    position: absolute;
+    bottom: 80px;
+    right: 50px;
+    max-width: 33%;
+    box-shadow: 0 0 8px 3px rgba(0, 0, 0, .175);
+  }
+
+  .hero-block--content .hero-text h1 {
+    font-size: var(--body-font-size-m);
+  }
+  
 }
