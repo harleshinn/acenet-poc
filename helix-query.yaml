@@ -1,11 +1,16 @@
 version: 1
+# See https://www.hlx.live/docs/setup-indexing.
 
 indices:
-  allpages:
+  allpages: &default
     include:
       - '/**'
-    target: /query-index.xlsx
+    target: /query-index
     properties:
+      author:
+        select: head > meta[name="author"]
+        value: |
+          attribute(el, 'content')
       title:
         select: head > meta[property="og:title"]
         value: |
@@ -13,20 +18,32 @@ indices:
       date:
         select: head > meta[name="publication-date"]
         value: |
-          attribute(el, 'content')
+          dateValue(attribute(el, 'content'), 'MM-DD-YYYY')
       image:
         select: head > meta[property="og:image"]
         value: |
           match(attribute(el, 'content'), 'https:\/\/[^/]+(\/.*)')
+      imageAlt:
+        select: head > meta[property="og:image-alt"]
+        value: |
+          attribute(el, 'content')
       description:
         select: head > meta[name="description"]
+        value: |
+          attribute(el, 'content')
+      tags:
+        select: head > meta[property="article:tag"]
+        values: |
+          attribute(el, 'content')
+      robots:
+        select: head > meta[name="robots"]
         value: |
           attribute(el, 'content')
       lastModified:
         select: none
         value: |
           parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
-      tags:
-        select: head > meta[name="tag"]
+      navigation: 
+        select: head > meta[name="navigation"]
         value: |
           attribute(el, 'content')
