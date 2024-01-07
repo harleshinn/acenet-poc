@@ -1,3 +1,12 @@
-.article-list {
+.article-list-wrapper {
   background-color: #fff;
+}
+
+.article-list-wrapper .article-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
