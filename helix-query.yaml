@@ -20,7 +20,7 @@ indices:
         value: |
           dateValue(attribute(el, 'content'), 'MM-DD-YYYY')
       image:
-        select: head > meta[property="og:image"]
+        select: head > meta[property="image"]
         value: |
           match(attribute(el, 'content'), 'https:\/\/[^/]+(\/.*)')
       imageAlt:
