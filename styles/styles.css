@@ -9,6 +9,7 @@
   --white: #fff;
   --light-color: #eee;
   --text-color: #000;
+  --text-color-secondary: #4e4d4d;
 
   --title-primary: #0d2f4f;
 
@@ -128,7 +129,6 @@ a:hover {
 a.button:any-link, button {
   font-family: var(--body-font-family);
   display: inline-block;
-  box-sizing: border-box;
   text-decoration: none;
   padding: 7px 11px;
   font-style: normal;
@@ -140,6 +140,8 @@ a.button:any-link, button {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border: 0;
+  line-height: 1.5;
 }
 
 a.button:any-link::after, button::after {
@@ -162,7 +164,6 @@ button:disabled, button:disabled:hover {
 
 a.button.secondary, button.secondary {
   background-color: unset;
-  border: 2px solid currentcolor;
   color: var(--text-color)
 }
 
@@ -187,7 +188,6 @@ main img {
 
 @media (width >= 900px) {
   .section > div {
-    max-width: 1200px;
     margin: auto;
   }
 }

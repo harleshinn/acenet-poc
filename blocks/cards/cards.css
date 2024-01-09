@@ -2,30 +2,51 @@
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+}
+
+
+/* Cards Variations: trending-articles */
+.cards.trending-articles {
+  width: 80vw;
+  margin: 0 auto;
+  margin-top: 75px;
+  margin-bottom: 75px;
+  padding-bottom: 20px;
+}
+
+.cards.trending-articles ul {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(278px, 1fr));
-  grid-gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-.cards > ul > li {
-  border: 1px solid var(--dark-color);
-  background-color: var(--background-color)
+.cards.trending-articles h3 {
+  font-size: 23px;
+  color: var(--brand-secondary)
 }
 
-.cards .cards-card-body {
-  margin: 16px;
-}
-
-.cards .cards-card-image {
-  line-height: 0;
-}
-
-.cards .cards-card-body > *:first-child {
-  margin-top: 0;
-}
-
-.cards > ul > li img {
+.cards.trending-articles .cards-card-image img {
+  max-height: 168px;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  display: block;
   object-fit: cover;
+}
+
+
+.cards.trending-articles .button-container {
+  margin: 0;
+}
+
+.cards.trending-articles .button-container .button {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.cards.trending-articles .button-container:last-of-type .button {
+  background-color: var(--brand-secondary);
+}
+
+@media screen and (min-width: 1920px) {
+  
 }

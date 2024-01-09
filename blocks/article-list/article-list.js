@@ -10,16 +10,22 @@ async function fetchArticles() {
 function buildArticle(article) {
   const picture = createOptimizedPicture(article.image, article.imageAlt, true, [{ width: '750' }]);
   const articleEl = document.createElement('li');
-  articleEl.innerHTML = `<a href="${article.path}" class="article-card-link">
-  <div class="article-card-image">
-      ${picture.outerHTML}
+  articleEl.innerHTML = `<div class="card-wrapper"><a href="${article.path}" class="article-card__link">
+  ${picture.outerHTML}
+  <div class="article-card__content">
+      <span class="article-card__category">${article.category}</span>
+      <span class="article-card__date">${article.date}</span>
+      <h3 class="article-card__title">${article.title}</h3>
   </div>
-  <div class="article-card-content">
-      <h5>Article</h5>
-      <h4>${article.title}</h4>
-      <p>${article.description}</p>
-  </div></a>
+  <div class="article-card__overlay">
+      <span class="article-card__category">${article.category}</span>
+      <span class="article-card__date">${article.date}</span>
+      <p class="article-card__description">${article.description}</p>
+      <a href="${article.path}" class="button">Read more</a>
+  </div>
+  </a></div>
   `;
+  articleEl.classList.add('article-card');
 
   return articleEl;
 }
@@ -55,9 +61,7 @@ export default async function decorate(block) {
   loadMoreButton.setAttribute('type', 'button');
   loadMoreButton.classList.add('secondary-button');
   loadMoreButton.innerText = 'Load more';
-  const paginationText = document.createElement('p');
-  paginationText.classList.add('articles-pagination');
-  paginationText.innerText = `1 - ${pageMax} of ${articlesCount}`;
+
   loadMoreButton.addEventListener('click', function() {
     // Load more articles
     pageMax = Math.min(articlesOffset + ARTICLES_PER_PAGE, articlesCount);
@@ -71,6 +75,5 @@ export default async function decorate(block) {
   });
 
   block.appendChild(articlesContainer);
-  block.appendChild(paginationText);
   block.appendChild(loadMoreButton);
 }
