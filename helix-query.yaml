@@ -5,6 +5,9 @@ indices:
   allpages: &default
     include:
       - '/**'
+    exclude:
+      - '/nav'
+      - '/footer'
     target: /query-index
     properties:
       author:

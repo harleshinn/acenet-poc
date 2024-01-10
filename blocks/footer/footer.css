@@ -8,6 +8,10 @@ footer {
   background-repeat: no-repeat;
 }
 
+.footer .columns-wrapper {
+  width: 84.5vw;
+}
+
 footer .footer {
   margin: auto;
 }
@@ -21,3 +25,13 @@ footer .footer p {
   margin: 0;
 
 }
+
+.footer .footer-bottom-links {
+  color: var(--white);
+  border-top: 1px solid rgba(222, 222, 222, 0.2);
+  font-size: 12px;
+}
+
+.footer .footer-bottom-links a {
+  color: var(--white);
+ }

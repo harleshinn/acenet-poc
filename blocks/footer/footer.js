@@ -17,5 +17,8 @@ export default async function decorate(block) {
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
+  console.log('footer', block);
+  const footerContent = footer.querySelector('.footer__content');
+
   block.append(footer);
 }
