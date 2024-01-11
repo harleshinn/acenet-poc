@@ -53,7 +53,7 @@ indices:
   navigation:
     <<: *default
     include:
-      - '/nav/**'
+      - '/nav'
     exclude:
       - '/nav/index'
     target: /nav/query-index
