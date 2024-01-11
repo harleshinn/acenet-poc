@@ -53,5 +53,5 @@ indices:
   navigation:
     <<: *default
     include:
-      - '/nav'
+      - '/nav/**'
     target: /nav/query-index
