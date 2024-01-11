@@ -50,3 +50,8 @@ indices:
         select: head > meta[name="navigation"]
         value: |
           attribute(el, 'content')
+  navigation:
+    <<: *default
+    include:
+      - '/nav/**'
+    target: /nav/query-index
