@@ -55,6 +55,7 @@ indices:
   nav:
     <<: *default
     include:
+      - '/**'
       - '/nav/**'
       - '/nav'
       - 'nav/'
