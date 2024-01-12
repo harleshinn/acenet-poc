@@ -51,7 +51,7 @@ indices:
         select: head > meta[name="navigation"]
         value: |
           attribute(el, 'content')
-  navigation:
+  nav:
     <<: *default
     include:
       - '/nav/**'
