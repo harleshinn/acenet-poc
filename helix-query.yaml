@@ -60,7 +60,7 @@ indices:
       - '/nav'
       - 'nav/'
       - 'nav'
-    target: /navigation.json
+    target: /navigation
     properties:
       title:
         select: head > meta[property="og:title"]
