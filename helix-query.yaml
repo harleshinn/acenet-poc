@@ -56,10 +56,6 @@ indices:
     <<: *default
     include:
       - '/**'
-      - '/nav/**'
-      - '/nav'
-      - 'nav/'
-      - 'nav'
     target: /navigation
     properties:
       title:
