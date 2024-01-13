@@ -56,4 +56,16 @@ indices:
     <<: *default
     include:
       - '/**'
-    target: /navigation
+      - '/nav/**'
+      - '/nav/'
+      - 'nav'
+    target: /nav/nav-index
+    properties:
+      title: 
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
+      desc:
+        select: head > meta[name="description"]
+        value: |
+          attribute(el, 'content')
