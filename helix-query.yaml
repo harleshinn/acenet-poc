@@ -58,8 +58,7 @@ indices:
       - '/**'
       - '/nav/**'
       - '/nav/'
-      - 'nav'
-    target: /nav/navigation
+    target: /nav/navigation.xlsx
     properties:
       title: 
         select: head > meta[property="og:title"]
