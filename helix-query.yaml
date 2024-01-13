@@ -53,7 +53,6 @@ indices:
         value: |
           attribute(el, 'content')
   nav:
-    <<: *default
     include:
       - '/**'
       - '/nav/**'
