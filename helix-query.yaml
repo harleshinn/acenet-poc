@@ -59,7 +59,7 @@ indices:
       - '/nav/**'
       - '/nav/'
       - 'nav'
-    target: /nav/nav-index
+    target: /nav/navigation
     properties:
       title: 
         select: head > meta[property="og:title"]
