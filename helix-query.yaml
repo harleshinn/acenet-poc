@@ -88,6 +88,6 @@ indices:
         value: |
           innerHTML(el)
       navLinkListLinks:
-        select: body .nav-link-list > div > div > ul 
+        select: body .nav-link-list > div > div 
         value: |
           innerHTML(el)
