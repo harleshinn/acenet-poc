@@ -59,11 +59,27 @@ indices:
       - '/nav/'
     target: /nav/navigation.xlsx
     properties:
-      title: 
-        select: head > meta[property="og:title"]
+      spotlightTitle:
+        select: body .spotlight > div > div > h2
         value: |
-          attribute(el, 'content')
-      description:
-        select: head > meta[name="description"]
+          textContent(el)
+      spotlightSubTitle:
+        select: body .spotlight > div > div > h3
         value: |
-          attribute(el, 'content')
+          textContent(el)
+      spotlightDescription:
+        select: body .spotlight > div > div p:first-of-type
+        value: |
+          textContent(el)
+      spotlightLinkText:
+        select: body .spotlight > div > div > p:last-of-type > a
+        value: |
+          innerHTML(el)
+      spotlightLink:
+        select: body .spotlight > div > div > p:last-of-type > a
+        value: |
+          attribute(el, 'href')
+      spotlightImage:
+        select: body .spotlight > div > div > picture > img
+        value: |
+          attribute(el, 'src')
