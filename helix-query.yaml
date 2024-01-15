@@ -83,3 +83,11 @@ indices:
         select: body .spotlight > div > div > picture > img
         value: |
           attribute(el, 'src')
+      navLinkListSection:
+        select: body .nav-link-list > div > div > h2
+        value: |
+          innerHTML(el)
+      navLinkListLinks:
+        select: body .nav-link-list > div > div > ul 
+        value: |
+          innerHTML(el)
