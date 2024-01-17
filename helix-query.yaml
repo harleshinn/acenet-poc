@@ -59,6 +59,10 @@ indices:
       - '/nav/'
     target: /nav/navigation.xlsx
     properties:
+      title:
+        select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
       spotlightTitle:
         select: body .spotlight > div > div > h2
         value: |
