@@ -4,6 +4,18 @@ import { loadFragment } from '../fragment/fragment.js';
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
+async function fetchNav() {
+  const res = await fetch('/nav/navigation.json');
+  const json = await res.json();
+  return json.data;
+}
+
+async function fetchTopNavLinks() {
+  const res = await fetch('/nav/nav-top-links.json');
+  const json = await res.json();
+  return json.data;
+}
+
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
@@ -86,6 +98,8 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
   }
 }
 
+
+
 /**
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
@@ -114,7 +128,46 @@ export default async function decorate(block) {
     brandLink.closest('.button-container').className = '';
   }
 
+  const navData = await fetchNav();
+  const navTopLinks = await fetchTopNavLinks();
+
+  if (navTopLinks) {
+    console.log(navTopLinks);
+    const topNav = document.createElement('div');
+    topNav.className = 'nav-top-links';
+    let linkList;
+    navTopLinks.forEach((link) => {
+      linkList += `<a href="${link.linkPath}">${link.linkText}</a>`;
+    });
+
+    
+    navBrand.insertBefore(topNav, navBrand.firstChild);
+  }
+
+
+
+  
+  console.log(navData)
+  let navSectionContainer = document.createElement('ul');
+  navSectionContainer.className = 'default-content-wrapper';
+
+  if (navData) {
+    navData.forEach((section) => {
+      navSectionContainer.innerHTML += `
+      <li class="nav-section">
+        <a href="${section.path}">${section.title}</a>
+        <div class="nav-drop-wrapper">
+         ${section.navLinkListLinks}
+        </div>
+      </li>`;
+    });
+  }
+
+  console.log(navSectionContainer)
+
   const navSections = nav.querySelector('.nav-sections');
+  navSections.append(navSectionContainer);
+  //const navSections = navSectionContainer;
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
