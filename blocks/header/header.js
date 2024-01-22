@@ -1,4 +1,4 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata, decorateIcons } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
@@ -120,10 +120,15 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const brandLink = navBrand.querySelector('a');
   if (brandLink) {
-    brandLink.className = '';
+    const img = document.createElement('img');
+    img.src = `${window.hlx.codeBasePath}/icons/ACELogo.svg`;
+    img.classList.add('logo-image');
+    brandLink.className = 'logo';
     brandLink.closest('.button-container').className = '';
+    brandLink.innerText = '';
+    brandLink.insertAdjacentElement('afterbegin', img);
   }
 
   const navData = await fetchNav();
@@ -131,16 +136,16 @@ export default async function decorate(block) {
   let navigationHTML = '';
 
   if (navTopLinks) {
-    navigationHTML = navTopLinks.map(link => `<a href="${link.linkPath}">${link.linkText}</a>`).join('');
+    navigationHTML = navTopLinks.map((link) => `<a href="${link.linkPath}">${link.linkText}</a>`).join('');
   }
 
-  let navSectionContainer = document.createElement('ul');
+  const navSectionContainer = document.createElement('ul');
   navSectionContainer.className = 'default-content-wrapper';
 
   if (navData) {
     navData.forEach((section) => {
       navSectionContainer.innerHTML += `
-      <li class="nav-section">
+      <li class="nav-item">
         <a href="${section.path}">${section.title}</a>
         <div class="nav-drop-wrapper">
          ${section.navLinkListLinks}
