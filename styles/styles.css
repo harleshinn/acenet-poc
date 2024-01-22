@@ -11,6 +11,7 @@
   --text-color: #000;
   --text-color-secondary: #4e4d4d;
   --light-grey: #dedede;
+  --nav-hover: #f1bb34;
 
   --title-primary: #0d2f4f;
 
@@ -33,7 +34,7 @@
   --heading-font-size-xs: 18px;
 
   /* nav height */
-  --nav-height: 64px;
+  --nav-height: 84px;
 }
 
 @font-face {
@@ -66,10 +67,6 @@ body {
 
 body.appear {
   display: block;
-}
-
-header {
-  height: var(--nav-height);
 }
 
 h1, h2, h3,
