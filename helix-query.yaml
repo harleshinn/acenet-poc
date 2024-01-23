@@ -53,6 +53,10 @@ indices:
         select: head > meta[name="navigation"]
         value: |
           attribute(el, 'content')
+      category:
+        select: head > meta[property="category"]
+        value: |
+          attribute(el, 'content')
   nav:
     include:
       - '/**'
@@ -62,10 +66,6 @@ indices:
     properties:
       title:
         select: head > meta[property="og:title"]
-        value: |
-          attribute(el, 'content')
-      category:
-        select: head > meta[property="category"]
         value: |
           attribute(el, 'content')
       spotlightTitle:
