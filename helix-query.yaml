@@ -10,6 +10,7 @@ indices:
       - '/footer'
       - '/nav/**'
       - '/nav/'
+      - 'nav'
     target: /query-index
     properties:
       author:
@@ -61,6 +62,10 @@ indices:
     properties:
       title:
         select: head > meta[property="og:title"]
+        value: |
+          attribute(el, 'content')
+      category:
+        select: head > meta[property="category"]
         value: |
           attribute(el, 'content')
       spotlightTitle:
