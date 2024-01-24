@@ -37,6 +37,12 @@
   --nav-height: 84px;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: roboto-fallback;
   size-adjust: 100.06%;

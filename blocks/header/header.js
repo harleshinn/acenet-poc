@@ -140,15 +140,27 @@ export default async function decorate(block) {
   }
 
   const navSectionContainer = document.createElement('ul');
-  navSectionContainer.className = 'default-content-wrapper';
+  navSectionContainer.className = 'navigation-wrapper';
 
   if (navData) {
     navData.forEach((section) => {
       navSectionContainer.innerHTML += `
       <li class="nav-item">
-        <a href="${section.path}">${section.title}</a>
+        <a class="nav-item-link" href="#">${section.title}</a>
         <div class="nav-drop-wrapper">
-         ${section.navLinkListLinks}
+          <div class="spotlight">
+            ${section.spotlight}
+          </div>
+          <div class="nav-drop-content">
+            <h2>${section.navLinkListSection}</h2>
+            <div class="nav-drop-items"> 
+            ${section.navLinkListSectionLinks}
+            </div>
+          </div>
+          ${section.navLinkListSectionEnd ? `
+          <div class="nav-drop-contact">
+            ${section.navLinkListSectionEnd} 
+          </div>` : ''}
         </div>
       </li>`;
     });
@@ -157,9 +169,11 @@ export default async function decorate(block) {
   const navSections = nav.querySelector('.nav-sections');
   navSections.append(navSectionContainer);
   if (navSections) {
+    console.log('navSections', navSections);
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
       navSection.addEventListener('click', () => {
+        console.log('navSection clicked', navSection);
         if (isDesktop.matches) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
           toggleAllNavSections(navSections);

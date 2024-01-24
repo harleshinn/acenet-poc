@@ -163,14 +163,15 @@ header nav .nav-sections ul  {
   font-weight: 500;
 }
 
-header nav .nav-sections ul > li {
-  font-weight: 700;
-  text-transform: uppercase;
+header nav .nav-sections .navigation-wrapper .nav-item {
   width: 100%;
-  position: relative;
+  position: static;
+}
+header nav .nav-sections .navigation-wrapper .nav-item .nav-item-link {
+  font-weight: 700;
 }
 
-header nav .nav-sections ul > li > a {
+header nav .nav-sections .navigation-wrapper > li > a {
   text-align: center;
   font-size: 1em;
   line-height: 1.5rem;
@@ -178,6 +179,7 @@ header nav .nav-sections ul > li > a {
   align-items: center;
   justify-content: center;
   padding: 30px 15px;
+  text-transform: uppercase;
 }
 
 header nav .nav-sections ul > li > a:hover {
@@ -324,5 +326,124 @@ header nav .nav-tools {
   grid-area: tools;
 }
 
+/* Navigation second layer styles */
 
-.nav-drop-wrapper {display: none;}
+.nav-drop-wrapper {
+  position: absolute;
+  z-index: 1;
+  background-color: var(--white);
+  width: 100%;
+  left: 0;
+  padding: 30px 45px;
+  border-top: 1px solid #f1bb34;
+  white-space: normal;
+  display: flex;
+}
+
+.nav-drop-wrapper .nav-drop-items div ul { 
+  display: flex;
+  flex-direction: column;
+}
+
+
+.nav-drop-wrapper .spotlight {
+  width: 450px;
+  padding: 0 40px;
+}
+
+.nav-drop-wrapper .spotlight > div {
+  display: flex;
+}
+
+.nav-drop-wrapper .spotlight > div  > div {
+  width: 55%;
+}
+
+.nav-drop-wrapper .spotlight > div  > div:last-child {
+  width: 45%;
+  padding: 5px 0 0 30px;
+}
+
+.nav-drop-wrapper .spotlight > div  > div:last-child img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.nav-drop-wrapper h2 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.125em;
+  color: #0d2f4f;
+  padding-bottom: 15px;
+  margin: 0;
+}
+
+.nav-drop-wrapper .spotlight h3 {
+  font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0;
+    padding: 0 0 5px;
+}
+
+.nav-drop-wrapper .spotlight p {
+  padding: 0 0 15px;
+  font-size: 13px;
+  line-height: 21px;
+}
+
+.nav-drop-wrapper .spotlight a {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--white);
+  background-color: #0d2f4f;
+  text-decoration: none;
+  display: inline-block;
+  padding: 7px 11px;
+}
+
+.nav-drop-wrapper .spotlight a:hover {
+  background-color: var(--nav-hover);
+}
+
+.nav-drop-wrapper .nav-drop-content {
+  border-left: 1px solid #f1bb34;
+}
+
+.nav-drop-wrapper .nav-drop-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px; 
+  width: 100%;
+}
+
+.nav-drop-wrapper .nav-drop-content h2 {
+  padding-left: 40px;
+}
+
+.nav-drop-wrapper .nav-drop-items h3 {
+  color: #0d2f4f;
+  font-weight: 700;
+  display: block;
+  font-size: .938em;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.nav-drop-wrapper .nav-drop-items div {
+  padding: 0 20px 15px 40px;
+}
+
+.nav-drop-wrapper .nav-drop-items li a {
+  font-weight: 600;
+  font-size: 13px;
+  padding-left: 35px;
+  color: #0d2f4f;
+  line-height: 1.3;
+}
+
+.nav-drop-wrapper .nav-drop-items li a:hover {
+  background-color: transparent;
+}
