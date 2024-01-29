@@ -84,4 +84,3 @@ indices:
         select: body .nav-link-list > div + div:nth-child(3)
         value: |
           innerHTML(el)
-      
