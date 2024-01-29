@@ -8,9 +8,6 @@ header .nav-wrapper {
 header nav {
   box-sizing: border-box;
   display: grid;
-  grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
   align-items: center;
   margin: auto;
   height: var(--nav-height);
@@ -23,19 +20,31 @@ header nav[aria-expanded="true"] {
     'sections sections' 1fr
     'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
-  min-height: 100vh;
+  min-height: 40vh;
+  max-height: 402px;
 }
 
-@media (width >= 600px) {
-  header nav {
-    padding: 0 1rem;
-  }
+header nav .logo {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+header nav .logo-image {
+  max-height: 51px;
+  max-width: 222px;
 }
 
 @media (width >= 900px) {
   header nav {
     display: flex;
     justify-content: space-between;
+  }
+
+  header nav {
+    grid-template:
+      'hamburger brand tools' var(--nav-height)
+      'sections sections sections' 1fr / auto 1fr auto;
   }
 
   header nav[aria-expanded="true"] {
@@ -47,10 +56,6 @@ header nav[aria-expanded="true"] {
 header nav p {
   margin: 0;
   line-height: 1;
-}
-
-header nav a:any-link {
-  color: currentcolor;
 }
 
 /* hamburger */
@@ -167,25 +172,19 @@ header nav .nav-sections .navigation-wrapper .nav-item {
   width: 100%;
   position: static;
 }
+
 header nav .nav-sections .navigation-wrapper .nav-item .nav-item-link {
   font-weight: 700;
-}
-
-header nav .nav-sections .navigation-wrapper > li > a {
   text-align: center;
-  font-size: 1em;
+  font-size: 14px;
   line-height: 1.5rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 15px;
   text-transform: uppercase;
+  color: #0d2f4f!important;
+  padding: 15px 20px;
+  border-top: 1px solid #9fa7b4!important;
 }
 
-header nav .nav-sections ul > li > a:hover {
-  background-color: var(--nav-hover);
-  color: var(--brand-secondary);
-}
 
 header nav .nav-sections ul > li > ul {
   margin-top: 0;
@@ -195,39 +194,33 @@ header nav .nav-sections ul > li > ul > li {
   font-weight: 500;
 }
 
+header .nav-top-links {
+  background-color: var(--brand-secondary);
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+header .nav-top-links a {
+  color: var(--white);
+ 
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
 @media (width >= 900px) {
 
-  header nav .logo {
-    height: 100%;
-    width: auto;
-    display: block;
-  }
-
-  header nav .logo-image {
-    max-height: 51px;
-    max-width: 222px;
-  }
 
   header nav .nav-hamburger {
     display: none;
     visibility: hidden;
   }
 
-  header .nav-top-links {
-    background-color: var(--brand-secondary);
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 20px;
-  }
-
   header .nav-top-links a {
-    color: var(--white);
     padding: 6px 0;
-    text-decoration: none;
-    font-size: 13px;
-    line-height: 24px;
-    font-weight: 600;
-    text-transform: uppercase;
   }
 
   header .nav-top-links a::after {
@@ -248,6 +241,24 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav[aria-expanded="true"] .nav-sections {
     align-self: unset;
+  }
+
+  header nav .nav-sections .navigation-wrapper .nav-item .nav-item-link {
+    font-weight: 700;
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+    text-transform: uppercase;
+    color: var(--brand-secondary);
+  }
+
+  header nav .nav-sections ul > li > a:hover {
+    background-color: var(--nav-hover);
+    color: var(--brand-secondary);
   }
 
   header nav .nav-sections .nav-drop {
@@ -337,6 +348,11 @@ header nav .nav-tools {
   padding: 30px 45px;
   border-top: 1px solid #f1bb34;
   white-space: normal;
+  display: flex;
+  display: none;
+}
+
+.nav-drop-wrapper.show {
   display: flex;
 }
 
@@ -446,4 +462,24 @@ header nav .nav-tools {
 
 .nav-drop-wrapper .nav-drop-items li a:hover {
   background-color: transparent;
+}
+
+.nav-drop-wrapper .nav-drop-contact {
+  border-left: 1px solid #f1bb34;
+  padding: 0 40px;
+}
+
+.nav-drop-wrapper .nav-drop-contact p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.nav-drop-wrapper .nav-drop-contact a {
+  color: var(--link-color);
+}
+
+.nav-drop-wrapper .nav-drop-contact a.button {
+  color: var(--white);
 }

@@ -12,7 +12,6 @@
   --text-color-secondary: #4e4d4d;
   --light-grey: #dedede;
   --nav-hover: #f1bb34;
-
   --title-primary: #0d2f4f;
 
   /* fonts */
@@ -146,14 +145,6 @@ a.button:any-link, button {
   text-overflow: ellipsis;
   border: 0;
   line-height: 1.5;
-}
-
-a.button:any-link::after, button::after {
-  content: ">";
-  padding-left: 5px;
-  position: relative;
-  font-size: 1.1em;
-  top: 1px;
 }
 
 a.button:hover, a.button:focus, button:hover, button:focus  {

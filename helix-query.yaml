@@ -68,35 +68,20 @@ indices:
         select: head > meta[property="og:title"]
         value: |
           attribute(el, 'content')
-      spotlightTitle:
-        select: body .spotlight > div > div > h2
-        value: |
-          textContent(el)
-      spotlightSubTitle:
-        select: body .spotlight > div > div > h3
-        value: |
-          textContent(el)
-      spotlightDescription:
-        select: body .spotlight > div > div p:first-of-type
-        value: |
-          textContent(el)
-      spotlightLinkText:
-        select: body .spotlight > div > div > p:last-of-type > a
+      spotlight:
+        select: body .spotlight
         value: |
           innerHTML(el)
-      spotlightLink:
-        select: body .spotlight > div > div > p:last-of-type > a
-        value: |
-          attribute(el, 'href')
-      spotlightImage:
-        select: body .spotlight > div > div > picture > img
-        value: |
-          attribute(el, 'src')
       navLinkListSection:
         select: body .nav-link-list > div > div > h2
         value: |
           innerHTML(el)
-      navLinkListLinks:
-        select: body .nav-link-list > div > div 
+      navLinkListSectionLinks:
+        select: body .nav-link-list > div + div
         value: |
           innerHTML(el)
+      navLinkListSectionEnd:
+        select: body .nav-link-list > div + div:nth-child(3)
+        value: |
+          innerHTML(el)
+      

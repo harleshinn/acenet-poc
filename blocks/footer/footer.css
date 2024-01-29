@@ -28,7 +28,7 @@ footer .footer p {
 
 .footer .footer-bottom-links {
   color: var(--white);
-  border-top: 1px solid rgba(222, 222, 222, 0.2);
+  border-top: 1px solid rgba(222, 222, 222, 20%);
   font-size: 12px;
 }
 
