@@ -1,10 +1,11 @@
 .article-list-wrapper {
   padding: 15px;
-  width: 80vw;
   margin: 0 auto;
+  max-width: 83.333%;
 }
 
 .article-list {
+  margin: auto 30px;
   display: flex;
   flex-direction: column;
 } 

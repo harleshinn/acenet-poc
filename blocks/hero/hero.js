@@ -4,5 +4,4 @@ export default function decorate(block) {
 
   heroContainer.querySelector('div:first-child').className = 'hero-text';
   heroContainer.querySelector('div:last-child').className = 'hero-image';
-  console.log('lalala');
 }
