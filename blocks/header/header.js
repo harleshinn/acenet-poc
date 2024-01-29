@@ -4,6 +4,18 @@ import { loadFragment } from '../fragment/fragment.js';
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
+async function fetchNav() {
+  const res = await fetch('/nav/navigation.json');
+  const json = await res.json();
+  return json.data;
+}
+
+async function fetchTopNavLinks() {
+  const res = await fetch('/nav/nav-top-links.json');
+  const json = await res.json();
+  return json.data;
+}
+
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
@@ -42,7 +54,7 @@ function focusNavSection() {
  * @param {Boolean} expanded Whether the element should be expanded or collapsed
  */
 function toggleAllNavSections(sections, expanded = false) {
-  sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
+  sections.querySelectorAll('.nav-sections .navigation-wrapper > li').forEach((section) => {
     section.setAttribute('aria-expanded', expanded);
   });
 }
@@ -108,20 +120,74 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const brandLink = navBrand.querySelector('a');
   if (brandLink) {
-    brandLink.className = '';
+    const img = document.createElement('img');
+    img.src = `${window.hlx.codeBasePath}/icons/ACELogo.svg`;
+    img.classList.add('logo-image');
+    brandLink.className = 'logo';
     brandLink.closest('.button-container').className = '';
+    brandLink.innerText = '';
+    brandLink.insertAdjacentElement('afterbegin', img);
+  }
+
+  const navData = await fetchNav();
+  const navTopLinks = await fetchTopNavLinks();
+  let navigationHTML = '';
+
+  if (navTopLinks) {
+    navigationHTML = navTopLinks.map((link) => `<a href="${link.linkPath}">${link.linkText}</a>`).join('');
+  }
+
+  const navSectionContainer = document.createElement('ul');
+  navSectionContainer.className = 'navigation-wrapper';
+
+  if (navData) {
+    navData.forEach((section) => {
+      navSectionContainer.innerHTML += `
+      <li class="nav-item">
+        <a class="nav-item-link" href="#">${section.title}</a>
+        <div class="nav-drop-wrapper">
+          <div class="spotlight">
+            ${section.spotlight}
+          </div>
+          <div class="nav-drop-content">
+            <h2>${section.navLinkListSection}</h2>
+            <div class="nav-drop-items"> 
+            ${section.navLinkListSectionLinks}
+            </div>
+          </div>
+          ${section.navLinkListSectionEnd ? `
+          <div class="nav-drop-contact">
+            ${section.navLinkListSectionEnd} 
+          </div>` : ''}
+        </div>
+      </li>`;
+    });
   }
 
   const navSections = nav.querySelector('.nav-sections');
+  navSections.append(navSectionContainer);
   if (navSections) {
-    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
+    navSections.querySelectorAll(':scope .navigation-wrapper > li').forEach((navSection) => {
       if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-      navSection.addEventListener('click', () => {
+      navSection.addEventListener('click', (event) => {
         if (isDesktop.matches) {
           const expanded = navSection.getAttribute('aria-expanded') === 'true';
           toggleAllNavSections(navSections);
+          const clickedNavItem = event.target.closest('.nav-drop');
+          if (clickedNavItem) {
+            const navDropWrapper = clickedNavItem.querySelector('.nav-drop-wrapper');
+            const navDropWrappers = navSections.querySelectorAll('.nav-drop-wrapper');
+            navDropWrappers.forEach((wrapper) => {
+              if (wrapper !== navDropWrapper) {
+                wrapper.classList.remove('show');
+              }
+            });
+            if (navDropWrapper) {
+              navDropWrapper.classList.toggle('show');
+            }
+          }
           navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
         }
       });
@@ -140,9 +206,17 @@ export default async function decorate(block) {
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
   isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
-
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
+  const topNav = document.createElement('div');
+  topNav.className = 'nav-top-links';
+  topNav.insertAdjacentHTML('afterbegin', navigationHTML);
+  if (isDesktop.matches) {
+    nav.insertAdjacentElement('beforebegin', topNav);
+  } else {
+    nav.insertAdjacentElement('beforeend', topNav);
+  }
+
   block.append(navWrapper);
 }

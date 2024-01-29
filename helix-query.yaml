@@ -10,6 +10,7 @@ indices:
       - '/footer'
       - '/nav/**'
       - '/nav/'
+      - 'nav'
     target: /query-index
     properties:
       author:
