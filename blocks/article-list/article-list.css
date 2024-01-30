@@ -1,11 +1,9 @@
 .article-list-wrapper {
   padding: 15px;
   margin: 0 auto;
-  max-width: 83.333%;
 }
 
 .article-list {
-  margin: auto 30px;
   display: flex;
   flex-direction: column;
 } 
@@ -157,10 +155,19 @@
   .article-card {
     width: 33.333%;
   }
+
+
+
+  .article-list {
+    margin: auto 30px;
+  } 
 }
 
 @media screen and (min-width: 1290px) {
   .article-card {
     width: 25%;
+  }
+  .article-list-wrapper {
+    max-width: 83.333%;
   }
 }

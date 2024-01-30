@@ -35,6 +35,7 @@ export default async function decorate(block) {
   // Create container
   const articlesContainer = document.createElement('ul');
   articlesContainer.className = 'article-cards';
+  articlesContainer.setAttribute('id', 'articles');
 
   // Fetch articles
   const articlesData = await fetchArticles();
