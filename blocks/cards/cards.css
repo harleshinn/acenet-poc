@@ -47,6 +47,28 @@
   background-color: var(--brand-secondary);
 }
 
+.cards.podcasts {
+  max-width: 100%;
+  padding: 0 30px 30px;
+  margin: 0 auto;
+}
+
+.cards.podcasts ul {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.cards.podcasts img {
+  max-width: 200px;
+  margin: 5px;
+}
+
+@media (width >=1200px) {
+  .cards.podcasts {
+    max-width: 1000px;
+  }
+}
+
 @media screen and (min-width: 1920px) {
   
 }
