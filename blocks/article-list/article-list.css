@@ -89,9 +89,7 @@
   text-decoration: none;
 }
 
-
 /*** Article Card Overlay ***/
-
 .article-card .article-card-overlay {
   position: absolute;
   top: 0;
@@ -135,7 +133,6 @@
   background-color: rgba(255,255,255,.3);
 }
 
-
 @media screen and (min-width: 768px) {
   
   .article-cards {
@@ -156,8 +153,6 @@
     width: 33.333%;
   }
 
-
-
   .article-list {
     margin: auto 30px;
   } 
@@ -167,7 +162,10 @@
   .article-card {
     width: 25%;
   }
+}
+
+@media screen and (min-width: 1440px) {
   .article-list-wrapper {
-    max-width: 83.333%;
+    max-width: 80vw;
   }
 }

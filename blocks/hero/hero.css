@@ -13,7 +13,7 @@
   color: #fff;
   text-transform: uppercase;
   font-family: Oswald;
-  font-weight: 500!important;
+  font-weight: 500 !important;
   font-size: 1.5em;
   background: 0 0;
   padding: 0;
@@ -52,6 +52,7 @@
 
 .hero-block--content .hero-image img {
   display: block;
+  width: 100%;
 }
 
 @media screen and (min-width: 768px) {
@@ -68,7 +69,6 @@
   .hero-block--content .hero-text h1 {
     font-size: var(--body-font-size-m);
   }
-  
 }
 
 @media screen and (min-width: 992px) {
@@ -76,13 +76,12 @@
     padding: 15px;
     position: absolute;
     bottom: 80px;
-    right: 50px;
-    max-width: 33%;
+    right: 75px;
+    max-width: 25%;
     box-shadow: 0 0 8px 3px rgba(0, 0, 0, .175);
   }
 
   .hero-block--content .hero-text h1 {
     font-size: var(--body-font-size-m);
   }
-  
 }

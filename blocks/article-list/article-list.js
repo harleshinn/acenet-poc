@@ -77,4 +77,9 @@ export default async function decorate(block) {
 
   block.appendChild(articlesContainer);
   block.appendChild(loadMoreButton);
+  const articleCards = block.querySelectorAll('.article-card');
+  articleCards.forEach((item) => {
+    console.log(item.classList)
+    console.log(item)
+  });
 }
