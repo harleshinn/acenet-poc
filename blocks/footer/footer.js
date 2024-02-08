@@ -16,6 +16,11 @@ export default async function decorate(block) {
   // decorate footer DOM
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
-
   block.append(footer);
+  const footerContent = block.querySelectorAll('.footer-links > div > div');
+  footerContent.forEach((item, index) => {
+    if (index === 0) item.classList.add('social-media');
+    if (index === 1) item.classList.add('mission');
+    if (index === 2) item.classList.add('higher-education');
+  });
 }
