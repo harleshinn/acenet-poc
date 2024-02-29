@@ -35,6 +35,7 @@ export default async function decorate(block) {
   // Create container
   const articlesContainer = document.createElement('ul');
   articlesContainer.className = 'article-cards';
+  articlesContainer.setAttribute('id', 'articles');
 
   // Fetch articles
   const articlesData = await fetchArticles();
@@ -76,4 +77,9 @@ export default async function decorate(block) {
 
   block.appendChild(articlesContainer);
   block.appendChild(loadMoreButton);
+  const articleCards = block.querySelectorAll('.article-card');
+  articleCards.forEach((item) => {
+    console.log(item.classList)
+    console.log(item)
+  });
 }

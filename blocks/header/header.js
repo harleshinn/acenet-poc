@@ -2,7 +2,7 @@ import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 // media query match that indicates mobile/tablet width
-const isDesktop = window.matchMedia('(min-width: 900px)');
+const isDesktop = window.matchMedia('(min-width: 1280px)');
 
 async function fetchNav() {
   const res = await fetch('/nav/navigation.json');
@@ -212,11 +212,19 @@ export default async function decorate(block) {
   const topNav = document.createElement('div');
   topNav.className = 'nav-top-links';
   topNav.insertAdjacentHTML('afterbegin', navigationHTML);
-  if (isDesktop.matches) {
-    nav.insertAdjacentElement('beforebegin', topNav);
-  } else {
-    nav.insertAdjacentElement('beforeend', topNav);
-  }
+  const navTools = nav.querySelector('.nav-tools');
+  topNav.append(navTools);
 
+  const navigationObserver = new ResizeObserver((entries) => {
+    entries.forEach(() => {
+      if (isDesktop.matches === true) {
+        nav.insertAdjacentElement('beforebegin', topNav);
+      } else {
+        navSections.insertAdjacentElement('beforeend', topNav);
+      }
+    });
+  });
+
+  navigationObserver.observe(nav);
   block.append(navWrapper);
 }

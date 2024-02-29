@@ -1,6 +1,5 @@
 .article-list-wrapper {
   padding: 15px;
-  width: 80vw;
   margin: 0 auto;
 }
 
@@ -90,9 +89,7 @@
   text-decoration: none;
 }
 
-
 /*** Article Card Overlay ***/
-
 .article-card .article-card-overlay {
   position: absolute;
   top: 0;
@@ -136,7 +133,6 @@
   background-color: rgba(255,255,255,.3);
 }
 
-
 @media screen and (min-width: 768px) {
   
   .article-cards {
@@ -156,10 +152,20 @@
   .article-card {
     width: 33.333%;
   }
+
+  .article-list {
+    margin: auto 30px;
+  } 
 }
 
 @media screen and (min-width: 1290px) {
   .article-card {
     width: 25%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .article-list-wrapper {
+    max-width: 80vw;
   }
 }
